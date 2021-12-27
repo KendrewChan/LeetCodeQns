@@ -1,21 +1,21 @@
 class Solution {
 public:
     int deleteAndEarn(vector<int>& nums) {
-        if (nums.size() == 1) return nums[0];
-        // Sort into point array, now it becomes like house robbers qns
-        int largestSize = 10001;
-        vector<int> pointArray(largestSize, 0);
-        for (int num : nums) pointArray[num] += num;
+        int maxi = 0;
+        for (int i : nums) maxi = max(maxi, i);
+        vector<int> freqVect(maxi, 0);
+        for (int i : nums) freqVect[i-1]++;
+        for (int i = 0; i < freqVect.size(); i++) freqVect[i] *= i+1;
         
-        pointArray[2] = max(pointArray[2], pointArray[1]);
-        for (int i = 3; i < largestSize; i++) {
-            pointArray[i] = max(pointArray[i-1], pointArray[i] + pointArray[i-2]);
+        return rob(freqVect);
+    }
+    
+    int rob(vector<int>& nums) {
+        // Re-use house robber problem
+        int size = nums.size();
+        for (int i = 1; i < size; i++) {
+            nums[i] = max(nums[i] + (i > 1 ? nums[i-2] : 0), nums[i-1]); // Either add-on or maintain
         }
-        return pointArray[largestSize-1];
+        return nums[size-1];
     }
 };
-/*
-[3,4,2]
-[2,2,3,3,3,4]
-[4,10,10,8,1,4,10,9,7,6]
-*/
