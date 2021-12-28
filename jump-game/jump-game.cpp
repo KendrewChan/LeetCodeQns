@@ -1,11 +1,10 @@
 class Solution {
 public:
     bool canJump(vector<int>& nums) {
-        int furthestIdx = 0;
+        int furthest = 0;
         for (int i = 0; i < nums.size(); i++) {
-            furthestIdx = max(furthestIdx, i + nums[i]);
-            if (furthestIdx == i) break;
+            if (i <= furthest) furthest = max(furthest, i + nums[i]);
         }
-        return furthestIdx+1 >= nums.size();
+        return furthest >= nums.size()-1;
     }
 };
