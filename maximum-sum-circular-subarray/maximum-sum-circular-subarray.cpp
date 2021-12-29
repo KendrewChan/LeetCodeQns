@@ -1,6 +1,9 @@
 class Solution {
 public:
     int maxSubarraySumCircular(vector<int>& nums) {
+        // https://leetcode.com/problems/maximum-sum-circular-subarray/discuss/178422/One-Pass
+        // Not circular: Normal max subarray
+        // Circular: Sum - min subarray
         int sum = nums[0];
         
         int maxSub = nums[0];
