@@ -5,11 +5,8 @@ public:
         int currMax = 1;
         int currMin = 1;
         for (int num : nums) {
-            if (num < 0) {
-                int temp = currMax;
-                currMax = currMin;
-                currMin = temp;
-            }
+            if (num < 0) swap(currMax, currMin);
+
             currMax = max(num, num * currMax);
             currMin = min(num, num * currMin);
             
