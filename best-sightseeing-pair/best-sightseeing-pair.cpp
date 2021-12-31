@@ -1,20 +1,14 @@
 class Solution {
 public:
     int maxScoreSightseeingPair(vector<int>& values) {
-        vector<int> valuei;
-        vector<int> valuej;
-        for (int i = 0; i < values.size(); i++) {
-            valuei.push_back(values[i] + i);
-            valuej.push_back(values[i] - i);
-        }
-        
         int maxScore = 0;
-        int currLargesti = 0;
-        for (int i = 0; i < (values.size()-1); i++) {
-            currLargesti = max(currLargesti, valuei[i]);
-            int valj = valuej[i+1];
-            int score = currLargesti + valj;
-            maxScore = max(maxScore, score);
+        int currMax = values[0] + 0;
+        for (int i = 1; i < values.size(); i++) {
+            int iVal = values[i] + i;
+            int jVal = values[i] - i;
+            
+            maxScore = max(maxScore, currMax + jVal);
+            currMax = max(currMax, iVal);
         }
         return maxScore;
     }
