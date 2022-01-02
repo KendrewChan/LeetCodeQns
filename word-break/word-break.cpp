@@ -1,23 +1,19 @@
 class Solution {
 public:
-    bool wordBreak(string s, vector<string>& dict) {
-        if(dict.size() == 0) return false;
+    bool wordBreak(string s, vector<string>& d) {
+        vector<bool> dp(s.size(), false);
+        dp[0] = true;
         
-        vector<bool> dp(s.size()+1,false);
-        dp[0]=true;
-        
-        for(int i = 1; i <= s.size(); i++) {
-            for(int j = i-1; j >= 0; j--) {
-                if(dp[j]) {
-                    string word = s.substr(j,i-j);
-                    if(find(dict.begin(), dict.end(), word) != dict.end()) {
-                        dp[i]=true;
-                        break; //next i
-                    }
+        for (int i = 0; i < s.size(); i++) {
+            if (!dp[i]) continue;
+            for (int j = i+1; j <= s.size(); j++) {
+                string substr = s.substr(i, j-i);
+                if (find(d.begin(), d.end(), substr) != d.end()) {
+                    dp[j] = true;
+                    // cout << i << " : " << j << " -> " << substr << endl;
                 }
             }
         }
-        
         return dp[s.size()];
     }
 };
