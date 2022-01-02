@@ -29,7 +29,7 @@ public:
             else right = h;
         }
         
-        // Check middle
+        // Check middle, this only occurs in cases where max height happens on both left & right bound, e.g. [2, 0, 2]
         for (int i = leftBound+1; i < rightBound; i++) {
             rain += maxHeight - height[i];
         }
