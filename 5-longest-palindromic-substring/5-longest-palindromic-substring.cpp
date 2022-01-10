@@ -9,12 +9,10 @@ public:
             string currEven = i > 0 ? getLongestPalindrome(s, i-1, i) : "";
             int evenSize = currEven.size();
             
-            if (oddSize > evenSize && oddSize > longest.second) {
-                longest.first = currOdd;
-                longest.second = oddSize;
-            } else if (evenSize >= oddSize && evenSize > longest.second) {
-                longest.first = currEven;
-                longest.second = evenSize;
+            int currLargest = max(oddSize, evenSize);
+            if (currLargest > longest.second) {
+                longest.first = currLargest == oddSize ? currOdd : currEven;
+                longest.second = currLargest;
             }
         }
         return longest.first;
