@@ -18,7 +18,7 @@ public:
         return longest.first;
     }
     
-    string getLongestPalindrome(string s, int left, int right) {
+    string getLongestPalindrome(string& s, int left, int right) {
         // Compare left against right
         while (s[left] == s[right]) {
             if (left > 0 && right < s.size()) {
