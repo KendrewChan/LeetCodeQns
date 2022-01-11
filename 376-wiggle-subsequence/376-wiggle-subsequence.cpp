@@ -1,6 +1,8 @@
 class Solution {
 public:
     int wiggleMaxLength(vector<int>& nums) {
+        // Variation of longest increasing subsequence (albeit abit slow)
+        // Longest Increasing Subsequence: https://leetcode.com/problems/longest-increasing-subsequence/
         int n = nums.size();
         vector<int> wiggleDown(n, 1);
         vector<int> wiggleUp(n, 1);
