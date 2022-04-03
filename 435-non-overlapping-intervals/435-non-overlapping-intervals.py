@@ -4,7 +4,7 @@ class Solution(object):
         :type intervals: List[List[int]]
         :rtype: int
         """
-        # intervals.sort(key=lambda x: x[1])
+        intervals.sort(key=lambda x: x[1])
         intervals.sort(key=lambda x: x[0])
         count_stay = 0
         curr_end = 5*(10**4)
