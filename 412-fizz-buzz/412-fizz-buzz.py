@@ -9,6 +9,5 @@ class Solution(object):
             output = ""
             output += "Fizz" if i % 3 == 0 else ""
             output += "Buzz" if i % 5 == 0 else ""
-            output += str(i) if i % 3 != 0 and i % 5 != 0 else ""
-            arr.append(output)
+            arr.append(str(i) if output == "" else output)
         return arr
