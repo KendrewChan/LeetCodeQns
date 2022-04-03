@@ -4,4 +4,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        return 2*sum(set(nums)) - sum(nums)
+        val = 0
+        for num in nums:
+            val = val ^ num # XOR of itself is zero
+        return val
