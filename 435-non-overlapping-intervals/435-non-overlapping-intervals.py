@@ -8,7 +8,6 @@ class Solution(object):
         intervals.sort(key=lambda x: x[0]) # Sort by when it starts (this has greater priority thus sorted last)
         count_stay = 0
         curr_end = 5*(10**4) # Maximum
-        print(intervals)
         for i in range(len(intervals)-1, -1, -1):
             start, end = intervals[i]
             if end <= curr_end: # Check that it's within range, if not skip
