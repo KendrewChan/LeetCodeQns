@@ -14,13 +14,12 @@ class Solution(object):
         
         for i in range(n-1,-1,-1): # Start from the back
             for j in range(i+1,n): # Go rightwards
-                if s[i] == s[j]:
-                    if (j-i==1 or dp[i+1][j-1]):
-                        # Check if letters match. First loop is always correct. 
-                        # Check the leftward diagonal dp[i+1][j=1] see if its correct -> This continues to cascade leftwards depending on length of string. This is the key part of how the DP array knows whether a string is a palindrome or not
-                        dp[i][j] = True
-                        if len(longest) < len(s[i:j+1]):
-                            longest = s[i:j+1]
+                if s[i] == s[j] and (j-i==1 or dp[i+1][j-1]):
+                    # Check if letters match. First loop is always correct. 
+                    # Check the leftward diagonal dp[i+1][j=1] see if its correct -> This continues to cascade leftwards depending on length of string. This is the key part of how the DP array knows whether a string is a palindrome or not
+                    dp[i][j] = True
+                    if len(longest) < len(s[i:j+1]):
+                        longest = s[i:j+1]
                 
         return longest
                     
