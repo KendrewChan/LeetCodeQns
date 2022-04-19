@@ -10,7 +10,7 @@ class Solution(object):
         #filling out the diagonal by 1
         for i in range(n):
             dp[i][i] = True # Make rightwards diagonal column True
-            # longest = s[i] # Idk why this matters and why i can't just set longest = s[-1]
+            longest = s[i] # Idk why this matters and why i can't just set longest = s[-1]
         
         for i in range(n-1,-1,-1): # Start from the back
             for j in range(i+1,n): # Go rightwards
