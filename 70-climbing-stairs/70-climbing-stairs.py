@@ -1,14 +1,17 @@
 class Solution(object):
+    memoize = {}
+    memoize[1] = 1
+    memoize[2] = 2
+        
+    
     def climbStairs(self, n):
         """
         :type n: int
         :rtype: int
         """
-        dp = [0 for _ in range(n)]
-        dp[0] = 1
-        for i in range(1,n):
-            if i == 1:
-                dp[1] = 2
-                continue
-            dp[i] += dp[i-2] + dp[i-1]
-        return dp[n-1]
+        if n < 1:
+            return 0
+        if n in self.memoize:
+            return self.memoize[n]
+        self.memoize[n] = self.climbStairs(n-1) + self.climbStairs(n-2)
+        return self.memoize[n]
