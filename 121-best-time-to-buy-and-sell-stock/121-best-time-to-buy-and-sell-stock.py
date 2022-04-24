@@ -7,8 +7,7 @@ class Solution(object):
         maxprofit = 0
         curr = prices[0]
         for price in prices:
-            if price < curr:
-                curr = price
+            curr = min(curr, price)
             maxprofit = max(maxprofit, price-curr)
         return maxprofit
             
