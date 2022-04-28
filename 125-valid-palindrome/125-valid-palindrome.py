@@ -7,7 +7,7 @@ class Solution(object):
         phrase = ""
         for c in s:
             c = c.lower()
-            if (ord("a") <= ord(c) <= ord("z")) or (ord("0") <= ord(c) <= ord("9")):
+            if c.isalnum():
                 phrase += c
         
         for i in range(len(phrase)/2):
