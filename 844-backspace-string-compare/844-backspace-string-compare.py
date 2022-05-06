@@ -9,9 +9,13 @@ class Solution(object):
         
     def backspace(self, text):
         curr = ""
-        for c in text:
+        skip = 0
+        for c in text[::-1]:
             if c == "#":
-                curr = curr[:-1]
+                skip += 1
+            elif skip > 0:
+                skip -= 1
+                continue
             else:
-                curr += c
+                curr = c + curr
         return curr
