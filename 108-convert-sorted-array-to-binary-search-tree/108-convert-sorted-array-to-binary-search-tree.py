@@ -14,8 +14,8 @@ class Solution(object):
             return None
         mid = len(nums)/2
         root = TreeNode(
-            nums[mid], 
-            self.sortedArrayToBST(nums[0:mid]), 
+            nums[mid],
+            self.sortedArrayToBST(nums[:mid]),
             self.sortedArrayToBST(nums[mid+1:])
         )
         return root
