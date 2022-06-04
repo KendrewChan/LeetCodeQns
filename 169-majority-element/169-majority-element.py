@@ -1,19 +1,12 @@
-class Solution(object):
-    def majorityElement(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        # https://www.cs.utexas.edu/~moore/best-ideas/mjrty/
-        curr = -1
-        counter = 0
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        curr = [0,0]
         for num in nums:
-            if counter == 0:
-                curr = num
-                counter = 1
-            elif num == curr:
-                counter += 1
+            if curr[1] == 0:
+                curr = [num, 1]
+            elif num == curr[0]:
+                curr[1] += 1
             else:
-                counter -= 1
-        return curr
-            
+                curr[1] -= 1
+        return curr[0]
+                
