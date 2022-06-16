@@ -1,16 +1,15 @@
-class Solution(object):
-    def maxProduct(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        currMax = -99
-        maxpdt = 1
-        minpdt = 1
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        if len(nums) == 1:
+            return nums[0]
+        curr_max = 0
+        neg, pos = 0, 0
         for num in nums:
             if num < 0:
-                maxpdt, minpdt = minpdt, maxpdt
-            maxpdt = max(num, maxpdt * num)
-            minpdt = min(num, minpdt * num)
-            currMax = max(currMax, maxpdt)
-        return currMax
+                neg, pos = min(num, pos * num), max(num, neg * num)
+            else:
+                pos = max(num, pos * num)
+                neg = neg * num
+            curr_max = max(curr_max, pos)
+        return curr_max
+                
