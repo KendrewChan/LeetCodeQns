@@ -1,10 +1,6 @@
-class Solution(object):
-    def singleNumber(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        val = 0
-        for num in nums:
-            val = val ^ num # XOR of itself is zero
-        return val
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        res = nums[0]
+        for i in range(1,len(nums)):
+            res = res ^ nums[i]
+        return res
