@@ -3,5 +3,5 @@ class Solution:
         buy = -math.inf
         hold = 0
         for price in prices:
-            buy, hold = max(buy,hold-price),max(hold,buy+price-fee)
+            buy, hold = max(buy, hold-price), max(hold, buy+price-fee)
         return hold
