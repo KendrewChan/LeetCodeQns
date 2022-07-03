@@ -3,10 +3,8 @@ class Solution:
         mod = pow(10,9)+7
         dp = [0]*n
         dp[0] = 1
-        curr = 0
         for i in range(1,n):
             prevDelay, prevForget = i-delay, i-forget
-            # print(i, prevDelay, prevForget)
             dp[i]=dp[i-1]
             if prevForget >= 0:
                 toRemove = dp[prevForget]
