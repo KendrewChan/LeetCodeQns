@@ -5,6 +5,4 @@ class Solution:
         """
         n = len(nums)
         rotates = k%n
-        res = nums[n-rotates:] + nums[:n-rotates]
-        for i in range(n):
-            nums[i] = res[i]
+        nums[:] = nums[n-rotates:] + nums[:n-rotates]
