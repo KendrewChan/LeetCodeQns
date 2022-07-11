@@ -14,12 +14,11 @@ class Solution:
         
     def topologicalSort(self, numCourses, adjList):
         # https://www.youtube.com/watch?v=eL-KzMXSXXI
-        checked = [False]*numCourses
-        visited = [False]*numCourses
+        checked = [False]*numCourses # use to check which nodes were traversed
+        visited = [False]*numCourses # use to detect cycles
         self.ordering = []
         self.hasCycle = False
     
-        
         for at in range(numCourses):
             self.dfs(at, checked, visited, adjList)
         if self.hasCycle:
