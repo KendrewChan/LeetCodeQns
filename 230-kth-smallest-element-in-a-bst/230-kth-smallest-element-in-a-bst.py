@@ -6,6 +6,9 @@
 #         self.right = right
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
+        return self.kthSmallest_iterative(root, k)
+    
+    def kthSmallest_iterative(self, root: Optional[TreeNode], k: int) -> int:
         # inorder traversal of BST is an array sorted in the ascending order.
         # instead of doing recursively, we can do iteratively
         stk = []
@@ -21,3 +24,11 @@ class Solution:
             root = root.right
                 # Case 1: root.right == None, in that case, we'll just continue to pop from stk
                 # Case 2: root.right != None, int that case we'll loop and append the left elements again
+                
+    def kthSmallest_recursive(self, root: Optional[TreeNode], k: int) -> int:
+        # inorder traversal of BST is an array sorted in the ascending order.
+        def inorder(root):
+            if not root:
+                return []
+            return inorder(root.left) + [root.val] + inorder(root.right)
+        return inorder(root)[k-1]
