@@ -6,10 +6,10 @@ class Solution:
         neg, pos = 0, 0
         for num in nums:
             if num < 0:
-                neg, pos = min(num, pos * num), max(num, neg * num)
+                neg, pos = min(num, pos * num), neg * num
             else:
                 pos = max(num, pos * num)
-                neg = neg * num
+                neg *= num
             curr_max = max(curr_max, pos)
         return curr_max
                 
